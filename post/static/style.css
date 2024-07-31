@@ -1,0 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.cards {
+    width: 350px;
+    margin: auto;
+    padding: 10px;
+}
