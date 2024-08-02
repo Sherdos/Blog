@@ -3,6 +3,18 @@
 
 {% block content %}
 
-
+<form method="post" style="width: 400px; margin: auto ; margin-top: 40px;">
+    {% csrf_token %}
+    <h4>Войти</h4>
+    <div class="mb-3">
+        <label for="exampleInputUsername1" class="form-label">Логин</label>
+        <input name = "username" type="text" class="form-control" id="exampleInputUsername1" aria-describedby="UsernameHelp">
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Пароль</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+  </form>
 {% endblock content %}
     
