@@ -27,9 +27,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">О нас</a>
               </li>
+              
+              {% if not request.user.is_authenticated %}
+                
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">регистрация</a>
+                <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Войти</a>
+              </li>
+              {% endif %}
+                
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
