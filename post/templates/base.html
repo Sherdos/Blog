@@ -73,7 +73,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{% url 'add_post' %}"  style="width: 400px; margin: auto ; margin-top: 40px;">
+        <form method="post" action="{% url 'add_post' %}"  enctype="multipart/form-data"  style="width: 400px; margin: auto ; margin-top: 40px;">
           {% csrf_token %}
           <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Заголовок</label>
@@ -81,11 +81,11 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputDescription1" class="form-label">Текс</label>
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+              <textarea name="description" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
             </div>
             <div class="input-group mb-3">
               <label class="input-group-text" for="inputGroupFile01">Фото</label>
-              <input type="file" class="form-control" id="inputGroupFile01">
+              <input name="image" type="file" class="form-control" id="inputGroupFile01">
             </div>
 
             

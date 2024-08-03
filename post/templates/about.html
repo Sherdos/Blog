@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
 
-<h1>About</h1>
+<div class="continer" style="width: 700px; margin: auto;">
+    <h2>Blog</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui facere amet nobis, esse itaque labore harum, praesentium nisi nulla eum molestiae nesciunt asperiores error! Eveniet porro reiciendis cumque veritatis facere!</p>
+    <img src="{% static 'about.jpeg' %}" width="700px" height="300px">
+</div>
 {% endblock content %}
     
