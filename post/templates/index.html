@@ -11,7 +11,10 @@
         <div class="card-body">
           <h5 class="card-title">{{card.title}}</h5>
           <p class="card-text">{{card.desciption}}</p>
-          <a href="{% url 'show_post' card.id %}" class="btn btn-primary">Подробнее</a>
+          <div class="info">
+            <a href="{% url 'show_post' card.id %}" class="btn btn-primary">Подробнее</a>
+            <a href="{% url 'show_post' card.id %}" class="">{{card.user_id.username}}</a>
+          </div>
         </div>
       </div>
     {% endfor %}

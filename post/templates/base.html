@@ -41,21 +41,11 @@
                 <a class="nav-link" href="{% url 'logout' %}"> Выйти</a>
               </li>
               {% endif %}
-                
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
+              
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Создать пост
+              </button>
             </ul>
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -74,6 +64,37 @@
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Создать пост</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{% url 'add_post' %}"  style="width: 400px; margin: auto ; margin-top: 40px;">
+          {% csrf_token %}
+          <div class="mb-3">
+              <label for="exampleInputTitle1" class="form-label">Заголовок</label>
+              <input name = "title" type="text" class="form-control" id="exampleInputUsername1" aria-describedby="UsernameHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputDescription1" class="form-label">Текс</label>
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="inputGroupFile01">Фото</label>
+              <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+
+            
+          <button type="submit" class="btn btn-primary">Опубликовать</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

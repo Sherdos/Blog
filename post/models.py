@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -18,6 +18,12 @@ class Post(models.Model):
         verbose_name='фото',
         upload_to='posts/image/'
     )
+    
+    user_id = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='user_post',
+        verbose_name='пользователь')
     
     class Meta:
         verbose_name = 'Пост'
