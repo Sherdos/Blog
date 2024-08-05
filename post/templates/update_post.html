@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="post"   enctype="multipart/form-data"  style="width: 400px; margin: auto ; margin-top: 40px;">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputTitle1" class="form-label">Заголовок</label>
+        <input name = "title" value= '{{post.title}}' type="text" class="form-control" id="exampleInputTitle1" aria-describedby="TitleHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputDescription1" class="form-label">Текс</label>
+        <textarea name="description" class="form-control" placeholder="Leave a comment here" id="floatingTextarea">{{post.desciption}}</textarea>
+      </div>
+      <!-- <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Фото</label>
+        <input name="image" value="{{post.image.url}}" type="file" class="form-control" id="inputGroupFile01">
+      </div> -->
+
+      
+    <button type="submit" class="btn btn-primary">Опубликовать</button>
+  </form>
+{% endblock content %}
+    

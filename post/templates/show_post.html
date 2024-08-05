@@ -10,6 +10,9 @@
     <div class="image">
         <img src="{{post.image.url}}" alt="">
     </div>
+    <br>
+    <a class="btn btn-info " href="{% url 'update_post' post.id %}">Изменить</a>
+    <a class="btn btn-danger " href="{% url 'update_post' post.id %}">Удалить</a>
     <p>{{post.desciption}}</p>
 </div>
 

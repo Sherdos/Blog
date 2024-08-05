@@ -22,3 +22,14 @@ def add_post(request):
     image = request.FILES.get('image')
     Post.objects.create(title=title, desciption=description, image=image, user_id=request.user)
     return redirect('home')
+
+def update_post(request,id):
+    post = Post.objects.get(id=id)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        post.title = title
+        post.desciption = description
+        post.save()
+        return redirect('show_post', post.id)
+    return render(request, 'update_post.html',{'post':post})
