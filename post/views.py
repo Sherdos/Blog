@@ -33,3 +33,8 @@ def update_post(request,id):
         post.save()
         return redirect('show_post', post.id)
     return render(request, 'update_post.html',{'post':post})
+
+def delete_post(request, id):
+    post = Post.objects.get(id=id)
+    post.delete()
+    return redirect('home')
