@@ -11,8 +11,12 @@
         <img src="{{post.image.url}}" alt="">
     </div>
     <br>
+    
+    {% if request.user == post.user_id %}
     <a class="btn btn-info " href="{% url 'update_post' post.id %}">Изменить</a>
     <a class="btn btn-danger " href="{% url 'delete_post' post.id %}">Удалить</a>
+    {% endif %}
+        
     <p>{{post.desciption}}</p>
 </div>
 

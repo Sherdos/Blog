@@ -11,13 +11,16 @@ def user_register(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        try:
-            User.objects.get(username = username)
-            context['errors'] = 'логин занет'
-        except:
-            user = User.objects.create_user(username=username,email=email, password=password)
-            login(request,user)
-            return redirect('home')
+        if len(password) > 8:
+            try:
+                User.objects.get(username = username)
+                context['errors'] = 'логин занет'
+            except:
+                user = User.objects.create_user(username=username,email=email, password=password)
+                login(request,user)
+                return redirect('home')
+        else:
+            context['errors'] = 'пороль слишком короткий'
     return render(request, 'register.html', context)
 
 def user_login(request):

@@ -38,3 +38,10 @@ def delete_post(request, id):
     post = Post.objects.get(id=id)
     post.delete()
     return redirect('home')
+
+def search_post(request):
+    key = request.GET.get('key')
+    if key:
+        cards = Post.objects.filter(title__icontains = key)
+        return render(request, 'index.html', {'cards':cards})
+    return render(request, 'index.html')
