@@ -16,8 +16,38 @@
     <a class="btn btn-info " href="{% url 'update_post' post.id %}">Изменить</a>
     <a class="btn btn-danger " href="{% url 'delete_post' post.id %}">Удалить</a>
     {% endif %}
+
         
     <p>{{post.desciption}}</p>
+
+    <form method="post" action="{% url 'add_comment' post.id %}"  enctype="multipart/form-data"  style="width: 400px; margin: auto ; margin-top: 40px;">
+        {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputDescription1" class="form-label">Текс</label>
+            <textarea name="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+          </div>          
+        <button type="submit" class="btn btn-primary">Опубликовать</button>
+      </form>
 </div>
+
+
+<section class="content-item" id="comments">
+    <div class="container">   
+        <div class="row">
+            {% for comment in post.com_post.all %}
+            <div class="media">
+                <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
+                <div class="media-body">
+                    <h4 class="media-heading">{{comment.user}}</h4>
+                    <p>{{comment.text}}</p>
+                </div>
+            </div>
+            
+                
+            {% endfor %}
+        </div>
+    </div>
+</section>
+    
 
 {% endblock content %}

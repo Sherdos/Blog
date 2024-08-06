@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from post.models import Post
+from post.models import Post, Comment
 # Create your views here.
 # MVT - model veiw template
 
@@ -41,7 +41,12 @@ def delete_post(request, id):
 
 def search_post(request):
     key = request.GET.get('key')
+    cards = Post.objects.all()
     if key:
         cards = Post.objects.filter(title__icontains = key)
-        return render(request, 'index.html', {'cards':cards})
-    return render(request, 'index.html')
+    return render(request, 'index.html'), {'cards':cards}
+
+def add_comment(request, id):
+    text = request.POST.get('text')
+    Comment.objects.create(text = text, user = request.user, post_id = id)
+    return redirect('show_post', id)
