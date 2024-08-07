@@ -8,6 +8,15 @@
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui facere amet nobis, esse itaque labore harum, praesentium nisi nulla eum molestiae nesciunt asperiores error! Eveniet porro reiciendis cumque veritatis facere!</p>
     <img src="{% static 'about.jpeg' %}" width="700px" height="300px">
 </div>
+<form method="post" action="{% url 'add_review' %}"  enctype="multipart/form-data"  style="width: 400px; margin: auto ; margin-top: 40px;">
+    {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleInputDescription1" class="form-label">Отзыв</label>
+        <textarea name="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+      </div>          
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
+
 {% endblock content %}
     
 # Create Read Update Delete Post
