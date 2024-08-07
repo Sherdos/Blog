@@ -44,3 +44,27 @@ class Comment(models.Model):
      
     def __str__(self):
         return f'{self.user} '   
+    
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='like_user', verbose_name='Пользователь')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='like_post', verbose_name='Пост' )
+    
+    class Meta:
+        verbose_name = 'Лайк'
+        verbose_name_plural = 'Лайки'
+     
+    def __str__(self):
+        return f'{self.user} '   
+    
+    
+
+class Review(models.Model):
+    text = models.TextField('текст')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rev_user', verbose_name='Пользователь')
+    
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+     
+    def __str__(self):
+        return f'{self.user} ' 

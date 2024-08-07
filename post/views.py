@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from post.models import Post, Comment
+from post.models import Like, Post, Comment, Review
 # Create your views here.
 # MVT - model veiw template
 
@@ -50,3 +50,16 @@ def add_comment(request, id):
     text = request.POST.get('text')
     Comment.objects.create(text = text, user = request.user, post_id = id)
     return redirect('show_post', id)
+
+def like(request, id):
+    try:
+        like_post = Like.objects.get( user = request.user, post_id = id)
+        like_post.delete()
+    except:
+        Like.objects.create( user = request.user, post_id = id)
+    return redirect('show_post', id)
+
+def add_review(request):
+    text = request.POST.get('text')
+    Review.objects.create(text=text, user=request.user)
+    return redirect('home')
